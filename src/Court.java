@@ -79,90 +79,94 @@ public class Court {
         //Pawns............................
         for (Pawn pawn : whitePawns) {
 
-            pawn.setCurrenty(6);
-            pawn.setCurrentx(i);
-            board[6][i] = pawn.toString();
+            pawn.setCurrenty(i);
+            pawn.setCurrentx(6);
+            board[6][i] = pawn;
             i++;
         }
          i = 0;
         for (Pawn pawn : blackPawns) {
 
-            pawn.setCurrenty(1);
-            pawn.setCurrentx(i);
-            board[1][i] = pawn.toString();
+            pawn.setCurrenty(i);
+            pawn.setCurrentx(1);
+            board[1][i] = pawn;
             i++;
         }
         //Rooks..............................
         i = 0;
         for (Rook rook : whiteRooks) {
 
-            rook.setCurrenty(7);
-            rook.setCurrentx(i);
-            board[7][i] = rook.toString();
+            rook.setCurrenty(i);
+            rook.setCurrentx(7);
+            board[7][i] = rook;
             i += 7;
         }
         i = 0;
         for (Rook rook : blackRooks) {
-            rook.setCurrenty(0);
-            rook.setCurrentx(i);
-            board[0][i] = rook.toString();
+            rook.setCurrenty(i);
+            rook.setCurrentx(0);
+            board[0][i] = rook;
             i += 7;
         }
         //Knights...........................
         i = 1;
         for (Knight knight : whiteKnights) {
-            knight.setCurrenty(7);
-            knight.setCurrentx(i);
-            board[7][i] = knight.toString();
+            knight.setCurrenty(i);
+            knight.setCurrentx(7);
+            board[7][i] = knight;
             i += 5;
         }
         i = 1;
         for (Knight knight : blackKnights) {
-            knight.setCurrenty(0);
-            knight.setCurrentx(i);
-            board[0][i] = knight.toString();
+            knight.setCurrenty(i);
+            knight.setCurrentx(0);
+            board[0][i] = knight;
             i += 5;
         }
         //Bisop..............................
         i = 2;
         for (Bishop bishop : whiteBishops) {
-            bishop.setCurrenty(7);
-            bishop.setCurrentx(i);
-            board[7][i] = bishop.toString();
+            bishop.setCurrenty(i);
+            bishop.setCurrentx(7);
+            board[7][i] = bishop;
             i += 3;
         }
         i = 2;
         for (Bishop bishop : blackBishops) {
-            bishop.setCurrenty(0);
-            bishop.setCurrentx(i);
-            board[0][i] =bishop.toString();
+            bishop.setCurrenty(i);
+            bishop.setCurrentx(0);
+            board[0][i] =bishop;
             i += 3;
         }
         whiteQueen.setCurrenty(7);
         whiteQueen.setCurrentx(3);
-        board[7][3] = whiteQueen.toString();
+        board[7][3] = whiteQueen;
         whiteKing.setCurrenty(7);
         whiteKing.setCurrentx(4);
-        board[7][4] = whiteKing. toString();
+        board[7][4] = whiteKing;
 
         blackQueen.setCurrenty(0);
         blackQueen.setCurrentx(3);
-        board[0][3] = blackQueen.toString();
+        board[0][3] = blackQueen;
         blackKing.setCurrenty(0);
         blackKing.setCurrentx(4);
-        board[0][4] = blackKing.toString();
+        board[0][4] = blackKing;
 
     }
 
     public void displayBoard() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++)
-                System.out.print(board[i][j] + " | ");
+                System.out.print(board[i][j].toString() + " | ");
             System.out.println();
         }
     }
 //Different kinds of chessmen have access to this method
     public void setBoardField(String s ,int x ,int y) {
         board[x][y] = s;
+    }
+
+    public Object[][] getBoard() {
+        return board;
     }
 }
