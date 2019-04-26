@@ -4,8 +4,14 @@ public abstract class ChessMan {
     private int currentx;
     private int currenty;
 
-    public ChessMan (String color) {
+    public ChessMan(String color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return name + color;
+
     }
 
     public void setName(String name) {
