@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class Queen extends  ChessMan{
 
-public class Queen {
+    public Queen(String color){
+        super(color);
+        setName("Q");
+    }
+    public void move(){
+
+    }
+    public void capture(){}
+
 }

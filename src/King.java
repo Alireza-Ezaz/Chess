@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class King extends ChessMan {
+    private final String neme ="King";
+    public King(String color){
+        super(color);
+        setName("K");
+    }
+    public void move(){
 
-public class King {
+    }
+    public void capture(){}
+
 }

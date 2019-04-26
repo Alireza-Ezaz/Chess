@@ -1,4 +1,14 @@
-package PACKAGE_NAME;
+public class Pawn extends ChessMan {
 
-public class Pawn {
+    public Pawn(String color) {
+        super(color);
+        setName("P");
+
+    }
+
+    public void move() {
+    }
+
+    public void capture() {
+    }
 }

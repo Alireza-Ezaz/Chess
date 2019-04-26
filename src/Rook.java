@@ -1,4 +1,12 @@
-package PACKAGE_NAME;
+public class Rook extends  ChessMan {
 
-public class Rook {
+    public Rook(String color){
+        super(color);
+        setName("R");
+    }
+    public void move(){
+
+    }
+    public void capture(){}
+
 }
