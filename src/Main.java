@@ -20,15 +20,16 @@ public class Main {
                 case "PW": {
                     Pawn p =(Pawn)board[currentx][currenty];
                     System.out.println(p.getColor()+" "+p.getCurrentx()+" "+p.getCurrenty());
-                    if(p.move(desx,desy))
+                    if(p.move(desx,desy)||p.capture(desx,desy))
                     {
-                        System.out.println("he");
                         board[desx][desy] = p;
                         p.setCurrentx(desx);
                         p.setCurrenty(desy);
 
                         board[currentx][currenty] ="  ";
                     }
+                    else
+                        System.out.println("Illegal move");
 
                 }
 

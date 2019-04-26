@@ -20,7 +20,7 @@ public class Court {
         board = new Object[8][8];
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
-                board[i][j] =  "  ";
+                board[i][j] = "  ";
         whitePawns = new ArrayList<>();
         whiteKnights = new ArrayList<>();
         whiteBishops = new ArrayList<>();
@@ -84,7 +84,7 @@ public class Court {
             board[6][i] = pawn;
             i++;
         }
-         i = 0;
+        i = 0;
         for (Pawn pawn : blackPawns) {
 
             pawn.setCurrenty(i);
@@ -135,7 +135,7 @@ public class Court {
         for (Bishop bishop : blackBishops) {
             bishop.setCurrenty(i);
             bishop.setCurrentx(0);
-            board[0][i] =bishop;
+            board[0][i] = bishop;
             i += 3;
         }
         whiteQueen.setCurrenty(7);
@@ -155,14 +155,21 @@ public class Court {
     }
 
     public void displayBoard() {
+        System.out.print("   ");
+        for (int j = 0; j < 8; j++)
+            System.out.print("[" + j + "]  ");
+        System.out.println();
         for (int i = 0; i < 8; i++) {
+            System.out.print("[" + i + "] ");
+
             for (int j = 0; j < 8; j++)
                 System.out.print(board[i][j].toString() + " | ");
             System.out.println();
         }
     }
-//Different kinds of chessmen have access to this method
-    public void setBoardField(String s ,int x ,int y) {
+
+    //Different kinds of chessmen have access to this method
+    public void setBoardField(String s, int x, int y) {
         board[x][y] = s;
     }
 

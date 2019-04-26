@@ -42,9 +42,9 @@ public abstract class ChessMan {
         return name;
     }
 
-    abstract void move();
+    abstract boolean move(int x,int y);
 
-    abstract void capture();
+
 
 
 }
