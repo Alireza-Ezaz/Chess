@@ -18,6 +18,9 @@ public class Court {
 
     public Court() {
         board = new String[8][8];
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                board[i][j] =  "  ";
         whitePawns = new ArrayList<>();
         whiteKnights = new ArrayList<>();
         whiteBishops = new ArrayList<>();
@@ -66,68 +69,70 @@ public class Court {
         }
 
         placingChessmen();
-        
+
 
     }
 
     //placing chessman in the board
     private void placingChessmen() {
+        int i = 0;
         //Pawns............................
         for (Pawn pawn : whitePawns) {
-            int i = 0;
+
             pawn.setCurrenty(6);
             pawn.setCurrentx(i);
             board[6][i] = pawn.getColor() + pawn.getName();
             i++;
         }
+         i = 0;
         for (Pawn pawn : blackPawns) {
-            int i = 0;
+
             pawn.setCurrenty(1);
             pawn.setCurrentx(i);
-            board[6][i] = pawn.getColor() + pawn.getName();
+            board[1][i] = pawn.getColor() + pawn.getName();
             i++;
         }
         //Rooks..............................
+        i = 0;
         for (Rook rook : whiteRooks) {
-            int i = 0;
+
             rook.setCurrenty(7);
             rook.setCurrentx(i);
             board[7][i] = rook.getColor() + rook.getName();
             i += 7;
         }
-
+        i = 0;
         for (Rook rook : blackRooks) {
-            int i = 0;
             rook.setCurrenty(0);
             rook.setCurrentx(i);
             board[0][i] = rook.getColor() + rook.getName();
             i += 7;
         }
         //Knights...........................
+        i = 1;
         for (Knight knight : whiteKnights) {
-            int i = 1;
             knight.setCurrenty(7);
             knight.setCurrentx(i);
             board[7][i] = knight.getColor() + knight.getName();
             i += 5;
         }
+        i = 1;
         for (Knight knight : blackKnights) {
-            int i = 1;
             knight.setCurrenty(0);
             knight.setCurrentx(i);
             board[0][i] = knight.getColor() + knight.getName();
             i += 5;
         }
         //Bisop..............................
+        i = 2;
         for (Bishop bishop : whiteBishops) {
-            int i = 2;
             bishop.setCurrenty(7);
             bishop.setCurrentx(i);
             board[7][i] = bishop.getColor() + bishop.getName();
             i += 3;
         }
+        i = 2;
         for (Bishop bishop : blackBishops) {
-            int i = 2;
             bishop.setCurrenty(0);
             bishop.setCurrentx(i);
             board[0][i] = bishop.getColor() + bishop.getName();
@@ -135,23 +140,23 @@ public class Court {
         }
         whiteQueen.setCurrenty(7);
         whiteQueen.setCurrentx(3);
-        board[3][7] = whiteQueen.getColor() + whiteQueen.getName();
+        board[7][3] = whiteQueen.getColor() + whiteQueen.getName();
         whiteKing.setCurrenty(7);
         whiteKing.setCurrentx(4);
-        board[4][7] = whiteKing.getColor() + whiteKing.getName();
+        board[7][4] = whiteKing.getColor() + whiteKing.getName();
 
         blackQueen.setCurrenty(0);
         blackQueen.setCurrentx(3);
-        board[3][0] = blackQueen.getColor() + blackQueen.getName();
+        board[0][3] = blackQueen.getColor() + blackQueen.getName();
         blackKing.setCurrenty(0);
         blackKing.setCurrentx(4);
-        board[4][0] = blackKing.getColor() + blackKing.getName();
+        board[0][4] = blackKing.getColor() + blackKing.getName();
 
     }
 
     public void displayBoard() {
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 8; j++)
                 System.out.print(board[i][j] + " | ");
             System.out.println();
         }
