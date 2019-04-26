@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Court {
-    private String[][] board;
+    private Object[][] board;
     private ArrayList<Pawn> whitePawns;
     private ArrayList<Knight> whiteKnights;
     private ArrayList<Bishop> whiteBishops;
@@ -17,7 +17,7 @@ public class Court {
     private King blackKing;
 
     public Court() {
-        board = new String[8][8];
+        board = new Object[8][8];
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++)
                 board[i][j] =  "  ";
@@ -81,7 +81,7 @@ public class Court {
 
             pawn.setCurrenty(6);
             pawn.setCurrentx(i);
-            board[6][i] = pawn.getColor() + pawn.getName();
+            board[6][i] = pawn.toString();
             i++;
         }
          i = 0;
@@ -89,7 +89,7 @@ public class Court {
 
             pawn.setCurrenty(1);
             pawn.setCurrentx(i);
-            board[1][i] = pawn.getColor() + pawn.getName();
+            board[1][i] = pawn.toString();
             i++;
         }
         //Rooks..............................
@@ -98,14 +98,14 @@ public class Court {
 
             rook.setCurrenty(7);
             rook.setCurrentx(i);
-            board[7][i] = rook.getColor() + rook.getName();
+            board[7][i] = rook.toString();
             i += 7;
         }
         i = 0;
         for (Rook rook : blackRooks) {
             rook.setCurrenty(0);
             rook.setCurrentx(i);
-            board[0][i] = rook.getColor() + rook.getName();
+            board[0][i] = rook.toString();
             i += 7;
         }
         //Knights...........................
@@ -113,14 +113,14 @@ public class Court {
         for (Knight knight : whiteKnights) {
             knight.setCurrenty(7);
             knight.setCurrentx(i);
-            board[7][i] = knight.getColor() + knight.getName();
+            board[7][i] = knight.toString();
             i += 5;
         }
         i = 1;
         for (Knight knight : blackKnights) {
             knight.setCurrenty(0);
             knight.setCurrentx(i);
-            board[0][i] = knight.getColor() + knight.getName();
+            board[0][i] = knight.toString();
             i += 5;
         }
         //Bisop..............................
@@ -128,29 +128,29 @@ public class Court {
         for (Bishop bishop : whiteBishops) {
             bishop.setCurrenty(7);
             bishop.setCurrentx(i);
-            board[7][i] = bishop.getColor() + bishop.getName();
+            board[7][i] = bishop.toString();
             i += 3;
         }
         i = 2;
         for (Bishop bishop : blackBishops) {
             bishop.setCurrenty(0);
             bishop.setCurrentx(i);
-            board[0][i] = bishop.getColor() + bishop.getName();
+            board[0][i] =bishop.toString();
             i += 3;
         }
         whiteQueen.setCurrenty(7);
         whiteQueen.setCurrentx(3);
-        board[7][3] = whiteQueen.getColor() + whiteQueen.getName();
+        board[7][3] = whiteQueen.toString();
         whiteKing.setCurrenty(7);
         whiteKing.setCurrentx(4);
-        board[7][4] = whiteKing.getColor() + whiteKing.getName();
+        board[7][4] = whiteKing. toString();
 
         blackQueen.setCurrenty(0);
         blackQueen.setCurrentx(3);
-        board[0][3] = blackQueen.getColor() + blackQueen.getName();
+        board[0][3] = blackQueen.toString();
         blackKing.setCurrenty(0);
         blackKing.setCurrentx(4);
-        board[0][4] = blackKing.getColor() + blackKing.getName();
+        board[0][4] = blackKing.toString();
 
     }
 
@@ -161,6 +161,8 @@ public class Court {
             System.out.println();
         }
     }
-
-
+//Different kinds of chessmen have access to this method
+    public void setBoardField(String s ,int x ,int y) {
+        board[x][y] = s;
+    }
 }
