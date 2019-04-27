@@ -18,65 +18,26 @@ public class Main {
             switch (board[currentx][currenty].toString()) {
                 case "PB":
                 case "PW": {
-                    Queen q;
                     Pawn p = (Pawn) board[currentx][currenty];
                     System.out.println(p.getColor() + " " + p.getCurrentx() + " " + p.getCurrenty());
-                    if (p.move(desx, desy)) {
-                        if (!(board[desx][desy] instanceof String)) {
-                            System.out.println("Illegal move");
-                            continue;
-                        }
-
-                        //chenge the Pawn if in the last Row.......
-                        if (p.getColor().equals("W") && desx == 0) {
-                            q = new Queen("W");
-                            board[desx][desy] = q;
-                            board[currentx][currenty] = "  ";
-                            continue;
-                        }
-                        if (p.getColor().equals("B") && desx == 7) {
-                            q = new Queen("B");
-                            board[desx][desy] = q;
-                            board[currentx][currenty] = "  ";
-                            continue;
-                        }
-                        board[desx][desy] = p;
-                        p.setCurrentx(desx);
-                        p.setCurrenty(desy);
-                        board[currentx][currenty] = "  ";
-                    } else if (p.capture(desx, desy)) {
-                            if(!(board[desx][desy] instanceof String)){
-                                if (p.getColor().equals("W") && desx == 0) {
-                                    //alaki
-                                    int b;
-                                    q = new Queen("W");
-                                    board[desx][desy] = q;
-                                    board[currentx][currenty] = "  ";
-                                    continue;
-                                }
-                                if (p.getColor().equals("B") && desx == 7) {
-                                    //alaki
-                                    int a;
-                                    q = new Queen("B");
-                                    board[desx][desy] = q;
-                                    board[currentx][currenty] = "  ";
-                                    continue;
-                                }
-                                board[desx][desy] = p;
-                                p.setCurrentx(desx);
-                                p.setCurrenty(desy);
-                                board[currentx][currenty] = "  ";
-                            }
-                    } else
-                        System.out.println("Illegal move");
-
+                    if (p.move(currentx, currenty, desx, desy, board) == false && board[desx][desy] instanceof String)
+                        continue;
+                    if (p.capture(currentx, currenty, desx, desy, board) == false)
+                        continue;
                 }
 
 
+                case "KW":
+                case "kB": {
+
+                }
             }
 
 
         }
-    }
 
+
+    }
 }
+
+

@@ -4,9 +4,12 @@ public class Knight extends ChessMan {
         super(color);
         setName("K");
     }
-    public void move(){
 
+
+    boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
+        return false;
     }
-    public void capture(){}
+
+
 }
 

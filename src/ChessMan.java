@@ -42,7 +42,7 @@ public abstract class ChessMan {
         return name;
     }
 
-    abstract boolean move(int x,int y);
+    abstract boolean move(int currentx,int currenty,int desx,int desy,Object[][] obj);
 
 
 

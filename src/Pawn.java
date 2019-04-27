@@ -7,52 +7,110 @@ public class Pawn extends ChessMan {
 
     }
 
-    public boolean move(int x, int y) {
+    public boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
         boolean b = false;
 
         if (getColor().equals("W")) {
-            if (getCurrenty() == y) {
-                if (getCurrentx() - 1 == x)
+            if (getCurrenty() == desy) {
+                if (getCurrentx() - 1 == desx)
                     b = true;
                 if (firstTime == true)
-                    if (getCurrentx() - 1 == x || getCurrentx() - 2 == x) {
+                    if (getCurrentx() - 1 == desx || getCurrentx() - 2 == desx) {
                         b = true;
                         firstTime = false;
                     }
             }
-
-
-
 
         }
         if (getColor().equals("B")) {
-            if (getCurrenty() == y) {
-                if (getCurrentx() == x - 1)
+            if (getCurrenty() == desy) {
+                if (getCurrentx() == desx - 1)
                     b = true;
                 if (firstTime == true)
-                    if (getCurrentx() == x - 1 || getCurrentx() == x - 2) {
+                    if (getCurrentx() == desx - 1 || getCurrentx() == desx - 2) {
                         b = true;
                         firstTime = false;
                     }
             }
         }
+
+        Queen q;
+
+        if (b == true) {
+            if (!(obj[desx][desy] instanceof String)) {
+                System.out.println("Illegal move");
+                return false;
+            }
+
+            //chenge the Pawn if in the last Row.......
+            if (getColor().equals("W") && desx == 0) {
+                q = new Queen("W");
+                obj[desx][desy] = q;
+                obj[currentx][currenty] = "  ";
+                return false;
+            }
+            if (getColor().equals("B") && desx == 7) {
+                q = new Queen("B");
+                obj[desx][desy] = q;
+                obj[currentx][currenty] = "  ";
+                return false;
+            }
+
+            obj[desx][desy] = (Pawn) obj[currentx][currenty];
+            setCurrentx(desx);
+            setCurrenty(desy);
+            obj[currentx][currenty] = "  ";
+        }
+        if (b == false)
+            System.out.println("Illegal move");
         return b;
     }
 
-//only Pawn has capture method
-    public boolean capture(int x, int y) {
-        boolean b =false;
-        if(getColor().equals("B"))
-            if(getCurrentx() + 1 == x)
-                if(getCurrenty() + 1 == y || getCurrenty() - 1 == y)
+
+    //only Pawn has capture method
+    public boolean capture(int currentx, int currenty, int desx, int desy, Object[][] obj) {
+        boolean b = false;
+        System.out.println(getColor());
+
+        if (getColor().equals("B"))
+            if (currentx + 1 == desx)
+                if (currenty + 1 == desy || currenty - 1 == desy)
                     b = true;
 
-        if(getColor().equals("W"))
-            if(getCurrentx() - 1 == x)
-                if(getCurrenty() + 1 == y || getCurrenty() - 1 == y)
+        if (getColor().equals("W"))
+            if (currentx - 1 == desx)
+                if (currenty + 1 == desy || currenty - 1 == desy)
                     b = true;
 
+        Queen q;
 
-        return  b;
+
+        if (b == true) {
+
+            if (!(obj[desx][desy] instanceof String)) {
+                if (getColor().equals("W") && desx == 0) {
+                    q = new Queen("W");
+                    obj[desx][desy] = q;
+                    obj[currentx][currenty] = "  ";
+                    return false;
+                }
+                if (getColor().equals("B") && desx == 7) {
+                    q = new Queen("B");
+                    obj[desx][desy] = q;
+                    obj[currentx][currenty] = "  ";
+                    return false;
+                }
+
+                obj[desx][desy] = (Pawn) obj[currentx][currenty];
+                setCurrentx(desx);
+                setCurrenty(desy);
+                obj[currentx][currenty] = "  ";
+            }
+        }
+
+        if (b == false)
+            System.out.println("Illegal move");
+        return b;
     }
 }
+

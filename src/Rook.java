@@ -4,9 +4,12 @@ public class Rook extends  ChessMan {
         super(color);
         setName("R");
     }
-    public void move(){
 
+
+    boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
+        return false;
     }
-    public void capture(){}
+
+
 
 }

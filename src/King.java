@@ -1,12 +1,15 @@
 public class King extends ChessMan {
-    private final String neme ="King";
+
     public King(String color){
         super(color);
         setName("K");
     }
-    public void move(){
 
+
+    boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
+        return false;
     }
-    public void capture(){}
+
+
 
 }

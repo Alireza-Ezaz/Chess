@@ -4,9 +4,12 @@ public class Queen extends  ChessMan{
         super(color);
         setName("Q");
     }
-    public void move(){
 
+
+    boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
+        return false;
     }
-    public void capture(){}
+
+
 
 }
