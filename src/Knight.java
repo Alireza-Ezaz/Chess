@@ -20,11 +20,13 @@ public class Knight extends ChessMan {
 //
 
         if (b == true) {
+            if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
 
-            obj[desx][desy] = (Knight) obj[currentx][currenty];
-            setCurrentx(desx);
-            setCurrenty(desy);
-            obj[currentx][currenty] = "  ";
+                obj[desx][desy] = (Knight) obj[currentx][currenty];
+                setCurrentx(desx);
+                setCurrenty(desy);
+                obj[currentx][currenty] = "  ";
+            }
         }
 
         if (b == false)
