@@ -50,10 +50,12 @@ public class Bishop extends ChessMan {
 
         }
         if (b == true) {
-            obj[desx][desy] = (Bishop) obj[currentx][currenty];
-            setCurrentx(desx);
-            setCurrenty(desy);
-            obj[currentx][currenty] = "  ";
+            if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
+                obj[desx][desy] = (Bishop) obj[currentx][currenty];
+                setCurrentx(desx);
+                setCurrenty(desy);
+                obj[currentx][currenty] = "  ";
+            }
         }
         if (b == false)
             System.out.println("Illigal move");

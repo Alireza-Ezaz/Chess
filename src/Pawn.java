@@ -70,7 +70,7 @@ public class Pawn extends ChessMan {
     //only Pawn has capture method
     public boolean capture(int currentx, int currenty, int desx, int desy, Object[][] obj) {
         boolean b = false;
-        System.out.println(getColor());
+        //System.out.println(getColor());
 
         if (getColor().equals("B"))
             if (currentx + 1 == desx)
@@ -101,15 +101,17 @@ public class Pawn extends ChessMan {
                     return false;
                 }
 
+
+                if (sameColorCheck(currentx, currenty, desx, desy, obj)){
                 obj[desx][desy] = (Pawn) obj[currentx][currenty];
                 setCurrentx(desx);
                 setCurrenty(desy);
-                obj[currentx][currenty] = "  ";
+                obj[currentx][currenty] = "  ";}
             }
         }
 
-        if (b == false)
-            System.out.println("Illegal move");
+        //       if (b == false)
+        //          System.out.println("Illegal move");
         return b;
     }
 }
