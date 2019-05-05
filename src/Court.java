@@ -29,7 +29,9 @@ public class Court {
         whiteBishops = new ArrayList<>();
         whiteRooks = new ArrayList<>();
         whiteQueen = new Queen("W");
+        whiteChessMen.add(whiteQueen);
         whiteKing = new King("W");
+        whiteChessMen.add(whiteKing);
 
         blackChessMen = new ArrayList<>();
         blackPawns = new ArrayList<>();
@@ -37,7 +39,9 @@ public class Court {
         blackBishops = new ArrayList<>();
         blackRooks = new ArrayList<>();
         blackQueen = new Queen("B");
+        blackChessMen.add(blackQueen);
         blackKing = new King("B");
+        blackChessMen.add(blackKing);
 
         //creating all Pawns
         for (int i = 0; i < 8; i++) {

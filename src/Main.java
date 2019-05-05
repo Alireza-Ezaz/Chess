@@ -12,7 +12,12 @@ public class Main {
         //court.displayBoard();
         Object[][] board = court.getBoard();
         Boolean turn = false;
+
         while (true) {
+            if(!court.getWhiteChessMen().contains(court.getWhiteKing()))
+                System.exit(-1);
+            if(!court.getBlackChessMen().contains(court.getBlackKing()))
+                System.exit(-1);
             if (turn) {
                 System.out.println("black turn");
                 turn = false;
