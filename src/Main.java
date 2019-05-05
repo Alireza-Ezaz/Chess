@@ -14,10 +14,12 @@ public class Main {
         Boolean turn = false;
 
         while (true) {
-            if(!court.getWhiteChessMen().contains(court.getWhiteKing()))
-                System.exit(-1);
-            if(!court.getBlackChessMen().contains(court.getBlackKing()))
-                System.exit(-1);
+            if(!court.getWhiteChessMen().contains(court.getWhiteKing())){
+                System.out.println("BLACK WON THE GAME!!!!!!");
+                System.exit(-1);}
+            if(!court.getBlackChessMen().contains(court.getBlackKing())){
+                System.out.println("WHITE WON THE GAME!!!!!!");
+                System.exit(-1);}
             if (turn) {
                 System.out.println("black turn");
                 turn = false;
