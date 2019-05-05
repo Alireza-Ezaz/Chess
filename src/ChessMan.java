@@ -92,9 +92,8 @@ public abstract class ChessMan {
         }
         return true;
     }
-    abstract void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w,ArrayList b);
 
-
+    abstract void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b);
 
 
 }

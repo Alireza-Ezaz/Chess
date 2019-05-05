@@ -92,23 +92,24 @@ public class Queen extends ChessMan {
         }
 
 
-
         //if (b == false)
-           // System.out.println("Illigal move");
+        // System.out.println("Illigal move");
         return b;
 
     }
-    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b){
+
+    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b) {
         if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
             Object o = obj[desx][desy];
-            if(w.contains(o))
+            if (w.contains(o))
                 w.remove(o);
-            if(b.contains(o))
+            if (b.contains(o))
                 b.remove(o);
             obj[desx][desy] = (Queen) obj[currentx][currenty];
             setCurrentx(desx);
             setCurrenty(desy);
-            obj[currentx][currenty] = "  ";}
+            obj[currentx][currenty] = "  ";
+        }
     }
 
 

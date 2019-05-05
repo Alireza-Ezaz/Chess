@@ -42,7 +42,7 @@ public class Pawn extends ChessMan {
         return b;
     }
 
-    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w,ArrayList b) {
+    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b) {
         Queen q;
 
         if (!(obj[desx][desy] instanceof String)) {
@@ -64,9 +64,9 @@ public class Pawn extends ChessMan {
             return;
         }
         Object o = obj[desx][desy];
-        if(w.contains(o))
+        if (w.contains(o))
             w.remove(o);
-        if(b.contains(o))
+        if (b.contains(o))
             b.remove(o);
         obj[desx][desy] = (Pawn) obj[currentx][currenty];
         setCurrentx(desx);
@@ -96,7 +96,7 @@ public class Pawn extends ChessMan {
         return b;
     }
 
-    void realCapture(int currentx, int currenty, int desx, int desy, Object[][] obj,ArrayList w,ArrayList b) {
+    void realCapture(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b) {
         Queen q;
         if (!(obj[desx][desy] instanceof String)) {
             if (getColor().equals("W") && desx == 0) {
@@ -115,9 +115,9 @@ public class Pawn extends ChessMan {
 
             if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
                 Object o = obj[desx][desy];
-                if(w.contains(o))
+                if (w.contains(o))
                     w.remove(o);
-                if(b.contains(o))
+                if (b.contains(o))
                     b.remove(o);
                 obj[desx][desy] = (Pawn) obj[currentx][currenty];
                 setCurrentx(desx);

@@ -30,9 +30,9 @@ public class Knight extends ChessMan {
     void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w,ArrayList b){
         if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
             Object o = obj[desx][desy];
-            if(w.contains(o))
+            if (w.contains(o))
                 w.remove(o);
-            if(b.contains(o))
+            if (b.contains(o))
                 b.remove(o);
         obj[desx][desy] = (Knight) obj[currentx][currenty];
         setCurrentx(desx);

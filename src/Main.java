@@ -11,8 +11,15 @@ public class Main {
         Court court = new Court();
         //court.displayBoard();
         Object[][] board = court.getBoard();
-
+        Boolean turn = false;
         while (true) {
+            if (turn) {
+                System.out.println("black turn");
+                turn = false;
+            } else {
+                System.out.println("White turn");
+                turn = true;
+            }
             court.checkKing();
             Thread.sleep(1000);
             // court.checkKing();
@@ -32,11 +39,11 @@ public class Main {
 
 
                     if (p.move(currentx, currenty, desx, desy, board) == true) {
-                        p.realMove(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        p.realMove(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     if (p.capture(currentx, currenty, desx, desy, board)) {
-                        p.realCapture(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        p.realCapture(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     break;
@@ -48,7 +55,7 @@ public class Main {
                     Knight k = (Knight) board[currentx][currenty];
                     if (k.move(currentx, currenty, desx, desy, board) == true) {
 
-                        k.realMove(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        k.realMove(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     break;
@@ -57,7 +64,7 @@ public class Main {
                 case "BB": {
                     Bishop b = (Bishop) board[currentx][currenty];
                     if (b.move(currentx, currenty, desx, desy, board)) {
-                        b.realMove(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        b.realMove(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     break;
@@ -66,7 +73,7 @@ public class Main {
                 case "RB": {
                     Rook r = (Rook) board[currentx][currenty];
                     if (r.move(currentx, currenty, desx, desy, board) == true) {
-                        r.realMove(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        r.realMove(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     break;
@@ -76,7 +83,7 @@ public class Main {
                 case "QB": {
                     Queen q = (Queen) board[currentx][currenty];
                     if (q.move(currentx, currenty, desx, desy, board)) {
-                        q.realMove(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        q.realMove(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     break;
@@ -86,7 +93,7 @@ public class Main {
                 case "SB": {
                     King k = (King) board[currentx][currenty];
                     if (k.move(currentx, currenty, desx, desy, board) == true) {
-                        k.realMove(currentx, currenty, desx, desy, board,court.getWhiteChessMen(),court.getBlackChessMen());
+                        k.realMove(currentx, currenty, desx, desy, board, court.getWhiteChessMen(), court.getBlackChessMen());
                         continue;
                     }
                     break;

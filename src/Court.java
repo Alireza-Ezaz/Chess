@@ -212,14 +212,14 @@ public class Court {
         int wy = whiteKing.getCurrenty();
         for (ChessMan ch : blackChessMen) {
             //System.out.println(ch.getCurrentx()+" "+ch.getCurrenty()+" "+wx+" "+wy);
-            if (!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board))
+            if ((!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)) || (ch instanceof Pawn && ((Pawn) ch).capture(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)))
                 System.out.println("White King in check!!!");
         }
 
         int bx = blackKing.getCurrentx();
         int by = blackKing.getCurrenty();
         for (ChessMan ch : whiteChessMen) {
-            if (!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), bx, by, board))
+            if ((!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), bx, by, board)) || (ch instanceof Pawn && ((Pawn) ch).capture(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)))
                 System.out.println("Black King in check!!!");
         }
 

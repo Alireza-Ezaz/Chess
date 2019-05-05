@@ -17,21 +17,23 @@ public class King extends ChessMan {
                 b = true;
 
 
-       // if (b == false)
-           //System.out.println("Illegal move");
+        // if (b == false)
+        //System.out.println("Illegal move");
         return b;
     }
-    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b){
+
+    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b) {
         if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
             Object o = obj[desx][desy];
-            if(w.contains(o))
+            if (w.contains(o))
                 w.remove(o);
-            if(b.contains(o))
+            if (b.contains(o))
                 b.remove(o);
             obj[desx][desy] = (King) obj[currentx][currenty];
             setCurrentx(desx);
             setCurrenty(desy);
-            obj[currentx][currenty] = "  ";}
+            obj[currentx][currenty] = "  ";
+        }
     }
 
 
