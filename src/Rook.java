@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Rook extends ChessMan {
 
     public Rook(String color) {
@@ -13,7 +15,7 @@ public class Rook extends ChessMan {
             if (yy > 0) {
                 for (int i = 1; i < yy; i++)
                     if (!(obj[currentx][currenty + i] instanceof String)) {
-                        System.out.println("Illigal move");
+                        //System.out.println("Illigal move");
                         return false;
                     }
                 b = true;
@@ -21,7 +23,7 @@ public class Rook extends ChessMan {
             if (yy < 0) {
                 for (int i = 1; i < -yy; i++)
                     if (!(obj[currentx][currenty - i] instanceof String)) {
-                        System.out.println("Illigal move");
+                        //System.out.println("Illigal move");
                         return false;
                     }
                 b = true;
@@ -33,7 +35,7 @@ public class Rook extends ChessMan {
             if (xx > 0) {
                 for (int i = 1; i < xx; i++)
                     if (!(obj[currentx + i][currenty] instanceof String)) {
-                        System.out.println("Illigal move");
+                        //System.out.println("Illigal move");
                         return false;
                     }
                 b = true;
@@ -42,24 +44,29 @@ public class Rook extends ChessMan {
             if (xx < 0) {
                 for (int i = 1; i < -xx; i++)
                     if (!(obj[currentx - i][currenty] instanceof String)) {
-                        System.out.println("Illigal move");
+                        //System.out.println("Illigal move");
                         return false;
                     }
                 b = true;
             }
 
         }
-        if (b == true) {
-            if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
-                obj[desx][desy] = (Rook) obj[currentx][currenty];
-                setCurrentx(desx);
-                setCurrenty(desy);
-                obj[currentx][currenty] = "  ";
-            }
-        }
-        if (b == false)
-            System.out.println("Illigal move");
-        return false;
+
+       // if (b == false)
+           // System.out.println("Illigal move");
+        return b;
+    }
+    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w, ArrayList b){
+        if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
+            Object o = obj[desx][desy];
+            if(w.contains(o))
+                w.remove(o);
+            if(b.contains(o))
+                b.remove(o);
+            obj[desx][desy] = (Rook) obj[currentx][currenty];
+            setCurrentx(desx);
+            setCurrenty(desy);
+            obj[currentx][currenty] = "  ";}
     }
 
 

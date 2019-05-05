@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pawn extends ChessMan {
     boolean firstTime = true;
 
@@ -34,36 +36,42 @@ public class Pawn extends ChessMan {
             }
         }
 
+
+        //if (b == false)
+        //  System.out.println("Illegal move");
+        return b;
+    }
+
+    void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w,ArrayList b) {
         Queen q;
 
-        if (b == true) {
-            if (!(obj[desx][desy] instanceof String)) {
-                System.out.println("Illegal move");
-                return false;
-            }
-
-            //chenge the Pawn if in the last Row.......
-            if (getColor().equals("W") && desx == 0) {
-                q = new Queen("W");
-                obj[desx][desy] = q;
-                obj[currentx][currenty] = "  ";
-                return false;
-            }
-            if (getColor().equals("B") && desx == 7) {
-                q = new Queen("B");
-                obj[desx][desy] = q;
-                obj[currentx][currenty] = "  ";
-                return false;
-            }
-
-            obj[desx][desy] = (Pawn) obj[currentx][currenty];
-            setCurrentx(desx);
-            setCurrenty(desy);
-            obj[currentx][currenty] = "  ";
+        if (!(obj[desx][desy] instanceof String)) {
+            // System.out.println("Illegal move");
+            return;
         }
-        if (b == false)
-            System.out.println("Illegal move");
-        return b;
+
+        //chenge the Pawn if in the last Row.......
+        if (getColor().equals("W") && desx == 0) {
+            q = new Queen("W");
+            obj[desx][desy] = q;
+            obj[currentx][currenty] = "  ";
+            return;
+        }
+        if (getColor().equals("B") && desx == 7) {
+            q = new Queen("B");
+            obj[desx][desy] = q;
+            obj[currentx][currenty] = "  ";
+            return;
+        }
+        Object o = obj[desx][desy];
+        if(w.contains(o))
+            w.remove(o);
+        if(b.contains(o))
+            b.remove(o);
+        obj[desx][desy] = (Pawn) obj[currentx][currenty];
+        setCurrentx(desx);
+        setCurrenty(desy);
+        obj[currentx][currenty] = "  ";
     }
 
 
@@ -82,37 +90,44 @@ public class Pawn extends ChessMan {
                 if (currenty + 1 == desy || currenty - 1 == desy)
                     b = true;
 
-        Queen q;
-
-
-        if (b == true) {
-
-            if (!(obj[desx][desy] instanceof String)) {
-                if (getColor().equals("W") && desx == 0) {
-                    q = new Queen("W");
-                    obj[desx][desy] = q;
-                    obj[currentx][currenty] = "  ";
-                    return false;
-                }
-                if (getColor().equals("B") && desx == 7) {
-                    q = new Queen("B");
-                    obj[desx][desy] = q;
-                    obj[currentx][currenty] = "  ";
-                    return false;
-                }
-
-
-                if (sameColorCheck(currentx, currenty, desx, desy, obj)){
-                obj[desx][desy] = (Pawn) obj[currentx][currenty];
-                setCurrentx(desx);
-                setCurrenty(desy);
-                obj[currentx][currenty] = "  ";}
-            }
-        }
 
         //       if (b == false)
         //          System.out.println("Illegal move");
         return b;
     }
+
+    void realCapture(int currentx, int currenty, int desx, int desy, Object[][] obj,ArrayList w,ArrayList b) {
+        Queen q;
+        if (!(obj[desx][desy] instanceof String)) {
+            if (getColor().equals("W") && desx == 0) {
+                q = new Queen("W");
+                obj[desx][desy] = q;
+                obj[currentx][currenty] = "  ";
+                return;
+            }
+            if (getColor().equals("B") && desx == 7) {
+                q = new Queen("B");
+                obj[desx][desy] = q;
+                obj[currentx][currenty] = "  ";
+                return;
+            }
+
+
+            if (sameColorCheck(currentx, currenty, desx, desy, obj)) {
+                Object o = obj[desx][desy];
+                if(w.contains(o))
+                    w.remove(o);
+                if(b.contains(o))
+                    b.remove(o);
+                obj[desx][desy] = (Pawn) obj[currentx][currenty];
+                setCurrentx(desx);
+                setCurrenty(desy);
+                obj[currentx][currenty] = "  ";
+            }
+
+
+        }
+    }
+
 }
 

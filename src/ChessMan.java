@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 public abstract class ChessMan {
     private String color;
     private String name = "";
     private int currentx;
     private int currenty;
+
 
     public ChessMan(String color) {
         this.color = color;
@@ -13,6 +16,7 @@ public abstract class ChessMan {
         return name + color;
 
     }
+
 
     public void setName(String name) {
         this.name = name;
@@ -88,6 +92,9 @@ public abstract class ChessMan {
         }
         return true;
     }
+    abstract void realMove(int currentx, int currenty, int desx, int desy, Object[][] obj, ArrayList w,ArrayList b);
+
+
 
 
 }
