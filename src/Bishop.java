@@ -15,7 +15,7 @@ public class Bishop extends ChessMan {
             int xx = desx - currentx;
             int yy = desy - currenty;
             if (xx > 0 && yy > 0) {
-                for (int i = 1; i < xx; i++)
+                for (int i = 0; i < xx; i++)
                     if (!(obj[currentx + i][currenty + i] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
@@ -23,7 +23,7 @@ public class Bishop extends ChessMan {
                 b = true;
             }
             if (xx > 0 && yy < 0) {
-                for (int i = 1; i < xx; i++)
+                for (int i = 0; i < xx; i++)
                     if (!(obj[currentx + i][currenty - i] instanceof String)) {
                         // System.out.println("Illigal move");
                         return false;
@@ -32,7 +32,7 @@ public class Bishop extends ChessMan {
             }
 
             if (xx < 0 && yy > 0) {
-                for (int i = 1; i < yy; i++)
+                for (int i = 0; i < yy; i++)
                     if (!(obj[currentx - i][currenty + i] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
@@ -41,7 +41,7 @@ public class Bishop extends ChessMan {
             }
 
             if (xx < 0 && yy < 0) {
-                for (int i = 1; i < -xx; i++)
+                for (int i = 0; i < -xx; i++)
                     if (!(obj[currentx - i][currenty - i] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;

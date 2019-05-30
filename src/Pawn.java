@@ -19,7 +19,7 @@ public class Pawn extends ChessMan {
                 if (firstTime == true)
                     if (getCurrentx() - 1 == desx || getCurrentx() - 2 == desx) {
                         b = true;
-                        firstTime = false;
+                       // firstTime = false;
                     }
             }
 
@@ -31,7 +31,7 @@ public class Pawn extends ChessMan {
                 if (firstTime == true)
                     if (getCurrentx() == desx - 1 || getCurrentx() == desx - 2) {
                         b = true;
-                        firstTime = false;
+                        //firstTime = false;
                     }
             }
         }
@@ -63,11 +63,14 @@ public class Pawn extends ChessMan {
             obj[currentx][currenty] = "  ";
             return;
         }
+
         Object o = obj[desx][desy];
         if (w.contains(o))
             w.remove(o);
         if (b.contains(o))
             b.remove(o);
+
+        firstTime = false;
         obj[desx][desy] = (Pawn) obj[currentx][currenty];
         setCurrentx(desx);
         setCurrenty(desy);

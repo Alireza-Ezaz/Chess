@@ -13,7 +13,7 @@ public class King extends ChessMan {
     boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
         boolean b = false;
         if (sameColorCheck(currentx, currenty, desx, desy, obj))
-            if (Math.abs(desx - currentx) <= 1 && Math.abs(desy - currenty) <= 1)
+            if (Math.abs(desx - currentx) <= 1 && Math.abs(desy - currenty) <= 1 && !(desx - currentx == 0 && (desy - currenty == 0)))
                 b = true;
 
 
