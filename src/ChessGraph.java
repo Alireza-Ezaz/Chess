@@ -13,31 +13,28 @@ import java.util.*;
 public class ChessGraph extends JButton {
     JFrame myFrame;
     private JButton[][] buttons = new JButton[8][8];
-    //private Field field;
+    private Court chessBoard;
 
     public ChessGraph() {
         myFrame = new JFrame("Chess Game");
-       // field = new Field();
+        chessBoard = new Court();
         myFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         myFrame.setLayout(new BorderLayout());
-
         JButton button = new JButton("Chess Game");
-
-
         myFrame.add(button, BorderLayout.PAGE_START);
-        button.setPreferredSize(new Dimension(10, 300));
+        button.setPreferredSize(new Dimension(10, 250));
         button.setFont(new Font("Arial", Font.PLAIN, 100));
 
         JPanel board = new JPanel(new GridLayout(8, 8));
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JButton b = new JButton();
-                b.addActionListener(new MyListener(buttons));
+                b.addActionListener(new MyListener(buttons,chessBoard));
                 buttons[i][j] = b;
 
                 if ((i == 0 && j == 1) || (i == 0 && j == 6)) {
                     try {
-                        Image img = ImageIO.read(getClass().getResource("BB.jpg"));
+                        Image img = ImageIO.read(getClass().getResource("HB.jpg"));
                         b.setIcon(new ImageIcon(img));
                     } catch (Exception ex) {
                         System.out.println(ex);
@@ -46,7 +43,7 @@ public class ChessGraph extends JButton {
                 }
                 if ((i == 7 && j == 1) || (i == 7 && j == 6)) {
                     try {
-                        Image img = ImageIO.read(getClass().getResource("BW.jpg"));
+                        Image img = ImageIO.read(getClass().getResource("HW.jpg"));
                         b.setIcon(new ImageIcon(img));
                     } catch (Exception ex) {
                         System.out.println(ex);
@@ -73,7 +70,7 @@ public class ChessGraph extends JButton {
                 }
                 if ((i == 0 && j == 2) || (i == 0 && j == 5)) {
                     try {
-                        Image img = ImageIO.read(getClass().getResource("HB.jpg"));
+                        Image img = ImageIO.read(getClass().getResource("BB.jpg"));
                         b.setIcon(new ImageIcon(img));
                     } catch (Exception ex) {
                         System.out.println(ex);
@@ -82,7 +79,7 @@ public class ChessGraph extends JButton {
                 }
                 if ((i == 7 && j == 2) || (i == 7 && j == 5)) {
                     try {
-                        Image img = ImageIO.read(getClass().getResource("HW.jpg"));
+                        Image img = ImageIO.read(getClass().getResource("BW.jpg"));
                         b.setIcon(new ImageIcon(img));
                     } catch (Exception ex) {
                         System.out.println(ex);
@@ -149,7 +146,6 @@ public class ChessGraph extends JButton {
                 if (i % 2 == 1)
                     if (j % 2 == 0) {
                         b.setBackground(Color.WHITE);
-                        //b.setForeground(Color.GREEN);
                     } else
                         b.setBackground(Color.BLACK);
                 else {
@@ -158,6 +154,7 @@ public class ChessGraph extends JButton {
                     else
                         b.setBackground(Color.WHITE);
                 }
+
 
                 board.add(b);
             }
@@ -179,7 +176,10 @@ public class ChessGraph extends JButton {
 
     }
 
-   // public Field getField() {
-   //     return field;
-    //}
+
+    public Court getChessBoard() {
+        return chessBoard;
+    }
+
+
 }
