@@ -13,7 +13,7 @@ public class Rook extends ChessMan {
         if (desx == currentx) {
             int yy = desy - currenty;
             if (yy > 0) {
-                for (int i = 0; i < yy; i++)
+                for (int i = 1; i < yy + 1; i++)
                     if (!(obj[currentx][currenty + i] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
@@ -21,7 +21,7 @@ public class Rook extends ChessMan {
                 b = true;
             }
             if (yy < 0) {
-                for (int i = 0; i < -yy; i++)
+                for (int i = 1; i < -yy + 1; i++)
                     if (!(obj[currentx][currenty - i] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
@@ -33,7 +33,7 @@ public class Rook extends ChessMan {
         if (currenty == desy) {
             int xx = desx - currentx;
             if (xx > 0) {
-                for (int i = 0; i < xx; i++)
+                for (int i = 1; i < xx + 1; i++)
                     if (!(obj[currentx + i][currenty] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
@@ -42,7 +42,7 @@ public class Rook extends ChessMan {
             }
             int yy = desy - currenty;
             if (xx < 0) {
-                for (int i = 0; i < -xx; i++)
+                for (int i = 1; i < -xx + 1; i++)
                     if (!(obj[currentx - i][currenty] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
