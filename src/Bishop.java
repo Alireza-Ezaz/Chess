@@ -15,37 +15,43 @@ public class Bishop extends ChessMan {
             int xx = desx - currentx;
             int yy = desy - currenty;
             if (xx > 0 && yy > 0) {
-                for (int i = 1; i < xx + 1; i++)
-                    if (!(obj[currentx + i][currenty + i] instanceof String)) {
-                        //System.out.println("Illigal move");
+                for (int i = 1; i < xx + 1; i++) {
+                    if(!(obj[currentx + i][currenty + i] instanceof String) && i == xx && sameColorCheck(currentx,currenty,currentx + xx,currenty + yy,obj) ){}
+                    else if (!(obj[currentx + i][currenty + i] instanceof String)) {
                         return false;
                     }
+                }
                 b = true;
             }
             if (xx > 0 && yy < 0) {
-                for (int i = 1; i < xx + 1; i++)
-                    if (!(obj[currentx + i][currenty - i] instanceof String)) {
-                        // System.out.println("Illigal move");
+                for (int i = 1; i < xx + 1; i++) {
+                    if(!(obj[currentx + i][currenty - i] instanceof String) && i == xx && sameColorCheck(currentx,currenty,currentx + xx,currenty + yy,obj) ){}
+                    else if (!(obj[currentx + i][currenty - i] instanceof String)) {
                         return false;
                     }
+                }
                 b = true;
             }
 
             if (xx < 0 && yy > 0) {
-                for (int i = 1; i < yy + 1; i++)
-                    if (!(obj[currentx - i][currenty + i] instanceof String)) {
-                        //System.out.println("Illigal move");
+                for (int i = 1; i < yy + 1; i++) {
+                    if(!(obj[currentx - i][currenty + i] instanceof String) && i == yy && sameColorCheck(currentx,currenty,currentx + xx,currenty + yy,obj)){}
+                   else if (!(obj[currentx - i][currenty + i] instanceof String)) {
                         return false;
                     }
+                }
                 b = true;
             }
+////////////////////////////////////////////////
 
             if (xx < 0 && yy < 0) {
-                for (int i = 1; i < -xx + 1; i++)
-                    if (!(obj[currentx - i][currenty - i] instanceof String)) {
+                for (int i = 1; i < -xx + 1; i++) {
+                    if(!(obj[currentx - i][currenty - i] instanceof String) && i == -xx && sameColorCheck(currentx,currenty,currentx + xx,currenty + yy,obj)){}
+                    else if (!(obj[currentx - i][currenty - i] instanceof String)) {
                         //System.out.println("Illigal move");
                         return false;
                     }
+                }
                 b = true;
             }
 
