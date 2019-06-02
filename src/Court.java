@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Court {
@@ -178,6 +179,9 @@ public class Court {
         return whiteChessMen;
     }
 
+    /**
+     * Draws the board of chess
+     */
     public void displayBoard() {
         System.out.print("   ");
         for (int j = 0; j < 8; j++)
@@ -192,7 +196,11 @@ public class Court {
         }
     }
 
-    //Different kinds of chessmen have access to this method
+    /**
+     * Set a specific field
+     * Different kinds of chessmen have access to this method
+     */
+
     public void setBoardField(String s, int x, int y) {
         board[x][y] = s;
     }
@@ -209,21 +217,22 @@ public class Court {
         return whiteKing;
     }
 
+    /**
+     * Check whether the kings are in check or not
+     */
     public void checkKing() {
-
-
         int wx = whiteKing.getCurrentx();
         int wy = whiteKing.getCurrenty();
         for (ChessMan ch : blackChessMen) {
             //System.out.println(ch.getCurrentx()+" "+ch.getCurrenty()+" "+wx+" "+wy);
-            if ((!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)) || (ch instanceof Pawn && ((Pawn) ch).capture(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)))
+            if ((!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)))
                 System.out.println("White King in check!!!");
         }
 
         int bx = blackKing.getCurrentx();
         int by = blackKing.getCurrenty();
         for (ChessMan ch : whiteChessMen) {
-            if ((!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), bx, by, board)) || (ch instanceof Pawn && ((Pawn) ch).capture(ch.getCurrentx(), ch.getCurrenty(), wx, wy, board)))
+            if ((!(ch instanceof Pawn) && ch.move(ch.getCurrentx(), ch.getCurrenty(), bx, by, board)))
                 System.out.println("Black King in check!!!");
         }
 

@@ -11,6 +11,8 @@ public class Bishop extends ChessMan {
 
     boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
         boolean b = false;
+        if(obj[desx][desy] instanceof King)
+            return false;
         if (Math.abs(desx - currentx) == Math.abs(desy - currenty)) {
             int xx = desx - currentx;
             int yy = desy - currenty;

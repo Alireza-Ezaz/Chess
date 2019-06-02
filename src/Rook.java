@@ -11,6 +11,8 @@ public class Rook extends ChessMan {
 
     boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
         boolean b = false;
+        if(obj[desx][desy] instanceof King)
+            return false;
         if (desx == currentx) {
             int yy = desy - currenty;
             if (yy > 0) {

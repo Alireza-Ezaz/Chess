@@ -10,6 +10,8 @@ public class Knight extends ChessMan {
 
     boolean move(int currentx, int currenty, int desx, int desy, Object[][] obj) {
         boolean b = false;
+        if(obj[desx][desy] instanceof King)
+            return false;
         if (!(obj[desx][desy] instanceof String)) {
             ChessMan ch = (ChessMan) obj[desx][desy];
             if (! ch.sameColorCheck(desx, desy, currentx, currenty, obj))
@@ -37,8 +39,9 @@ public class Knight extends ChessMan {
             Object o = obj[desx][desy];
             if (w.contains(o))
                 w.remove(o);
-            if (b.contains(o))
+            if (b.contains(o)){
                 b.remove(o);
+            }
             obj[desx][desy] = (Knight) obj[currentx][currenty];
             setCurrentx(desx);
             setCurrenty(desy);
