@@ -1,9 +1,11 @@
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MyListener implements ActionListener {
@@ -70,9 +72,28 @@ public class MyListener implements ActionListener {
                     if (buttons[i][j] == tmp) {
                         ChessMan chessMan;
                         chessMan = (ChessMan) board[currentx][currenty];
+
                         chessMan.realMove(currentx, currenty, i, j, board, whiteChessmen, blackChessmen);
-                        buttons[i][j].setIcon(buttons[currentx][currenty].getIcon());
-                        buttons[currentx][currenty].setIcon(null);
+
+                        if(chessMan instanceof Pawn && chessMan.getColor().equals("W") && i == 0) {
+                            try {
+                                buttons[i][j].setIcon(new ImageIcon(ImageIO.read(getClass().getResource("QW.jpg"))));
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                        else if(chessMan instanceof Pawn && chessMan.getColor().equals("B") && i == 7){
+                            try {
+                                buttons[i][j].setIcon(new ImageIcon(ImageIO.read(getClass().getResource("QB.jpg"))));
+                            } catch (IOException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                           else
+                               buttons[i][j].setIcon(buttons[currentx][currenty].getIcon());
+
+
+                            buttons[currentx][currenty].setIcon(null);
                     }
 
 
