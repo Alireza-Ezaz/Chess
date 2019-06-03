@@ -13,7 +13,12 @@ import java.util.*;
 public class ChessGraph extends JButton {
     JFrame myFrame;
     private JButton[][] buttons = new JButton[8][8];
+    private JButton[][] outWhites = new JButton[2][8];
+    private JButton[][] outblacks = new JButton[2][8];
     private Court chessBoard;
+
+
+
 
     public ChessGraph() {
         myFrame = new JFrame("Chess Game");
@@ -24,12 +29,35 @@ public class ChessGraph extends JButton {
         myFrame.add(button, BorderLayout.PAGE_START);
         button.setPreferredSize(new Dimension(10, 250));
         button.setFont(new Font("Arial", Font.PLAIN, 100));
-
         JPanel board = new JPanel(new GridLayout(8, 8));
+
+        JPanel leftPanel = new JPanel(new GridLayout(3, 1));
+        JPanel leftChessPanelBlack = new JPanel(new GridLayout(2, 8));
+        JPanel leftChessPanelWhite = new JPanel(new GridLayout(2, 8));
+
+        Dimension dim = new Dimension(50,50);
+        for (int i = 0; i < 2; i++)
+            for (int j = 0; j < 8; j++) {
+                JButton jButton1 = new JButton();
+                jButton1.setPreferredSize(dim);
+                jButton1.setBackground(Color.lightGray);
+                JButton jButton2 = new JButton();
+                jButton2.setPreferredSize(dim);
+                jButton2.setBackground(Color.lightGray);
+                outblacks[i][j] = jButton1;
+                outWhites[i][j] = jButton2;
+                leftChessPanelBlack.add(jButton1);
+                leftChessPanelWhite.add(jButton2);
+            }
+        leftPanel.add(leftChessPanelBlack);
+        leftPanel.add(new JButton("turn"));
+        leftPanel.add(leftChessPanelWhite);
+        leftPanel.setPreferredSize(new Dimension(1500, 30));
+
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JButton b = new JButton();
-                b.addActionListener(new MyListener(buttons,chessBoard));
+                b.addActionListener(new MyListener(buttons,outWhites,outblacks, chessBoard));
                 buttons[i][j] = b;
 
                 if ((i == 0 && j == 1) || (i == 0 && j == 6)) {
@@ -122,7 +150,7 @@ public class ChessGraph extends JButton {
                     }
 
                 }
-                if (i == 1 && j>= 0 && j <8) {
+                if (i == 1 && j >= 0 && j < 8) {
                     try {
                         Image img = ImageIO.read(getClass().getResource("PB.jpg"));
                         b.setIcon(new ImageIcon(img));
@@ -131,7 +159,7 @@ public class ChessGraph extends JButton {
                     }
 
                 }
-                if (i == 6 && j>= 0 && j <8) {
+                if (i == 6 && j >= 0 && j < 8) {
                     try {
                         Image img = ImageIO.read(getClass().getResource("PW.jpg"));
                         b.setIcon(new ImageIcon(img));
@@ -140,7 +168,6 @@ public class ChessGraph extends JButton {
                     }
 
                 }
-
 
 
                 if (i % 2 == 1)
@@ -162,12 +189,9 @@ public class ChessGraph extends JButton {
 
         myFrame.getContentPane().add(board, BorderLayout.CENTER);
 
-        JPanel leftPanel = new JPanel(new GridLayout(3, 1));
-        for (int i = 0; i < 3; i++)
-            leftPanel.add(new Button());
-        leftPanel.setPreferredSize(new Dimension(800, 80));
 
-        myFrame.getContentPane().add(leftPanel, BorderLayout.LINE_START);
+
+        myFrame.add(leftPanel, BorderLayout.WEST);
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         myFrame.setMaximumSize(dimension);
         myFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
