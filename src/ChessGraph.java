@@ -18,14 +18,13 @@ public class ChessGraph extends JButton {
     private Court chessBoard;
 
 
-
-
     public ChessGraph() {
         myFrame = new JFrame("Chess Game");
         chessBoard = new Court();
         myFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         myFrame.setLayout(new BorderLayout());
         JButton button = new JButton("Chess Game");
+        button.setBackground(Color.lightGray);
         myFrame.add(button, BorderLayout.PAGE_START);
         button.setPreferredSize(new Dimension(10, 250));
         button.setFont(new Font("Arial", Font.PLAIN, 100));
@@ -35,7 +34,7 @@ public class ChessGraph extends JButton {
         JPanel leftChessPanelBlack = new JPanel(new GridLayout(2, 8));
         JPanel leftChessPanelWhite = new JPanel(new GridLayout(2, 8));
 
-        Dimension dim = new Dimension(50,50);
+        Dimension dim = new Dimension(50, 50);
         for (int i = 0; i < 2; i++)
             for (int j = 0; j < 8; j++) {
                 JButton jButton1 = new JButton();
@@ -50,14 +49,18 @@ public class ChessGraph extends JButton {
                 leftChessPanelWhite.add(jButton2);
             }
         leftPanel.add(leftChessPanelBlack);
-        leftPanel.add(new JButton("turn"));
+        JButton turnButton = new JButton("White turn");
+        turnButton.setBackground(Color.pink);
+        turnButton.setFont(new Font("Arial", Font.PLAIN, 100));
+        turnButton.setForeground(Color.red);
+        leftPanel.add(turnButton);
         leftPanel.add(leftChessPanelWhite);
         leftPanel.setPreferredSize(new Dimension(1500, 30));
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JButton b = new JButton();
-                b.addActionListener(new MyListener(buttons,outWhites,outblacks, chessBoard));
+                b.addActionListener(new MyListener(buttons, outWhites, outblacks,turnButton, chessBoard));
                 buttons[i][j] = b;
 
                 if ((i == 0 && j == 1) || (i == 0 && j == 6)) {
@@ -188,7 +191,6 @@ public class ChessGraph extends JButton {
         }
 
         myFrame.getContentPane().add(board, BorderLayout.CENTER);
-
 
 
         myFrame.add(leftPanel, BorderLayout.WEST);
